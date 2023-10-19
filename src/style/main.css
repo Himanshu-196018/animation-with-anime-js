@@ -1,0 +1,30 @@
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsla(0, 0%, 10%, 0.9);
+  padding: 1rem;
+}
+
+/* color classes */
+.bg-red {
+  background-color: hsl(0, 70%, 40%);
+}
+
+.wrap {
+  border-bottom: 2px solid #000;
+  height: 300px;
+  padding-inline: 6rem;
+  display: grid;
+  align-items: center;
+}
+
+.box {
+  width: 80px;
+  height: 80px;
+}
