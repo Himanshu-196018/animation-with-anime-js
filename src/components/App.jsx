@@ -11,52 +11,84 @@ const App = () => {
   };
 
   useEffect(() => {
-    animation.current = anime.timeline({
-      loop: true,
-      duration: "1000ms",
-    });
+    animation.current = anime.timeline();
 
     // adding animations
     // targetting specific class
-    animation.current.add({
-      targets: `.wrap .box-1`,
-      translateX: 250,
-    });
+    animation.current.add(
+      anime({
+        targets: `.wrap .box-1`,
+        translateX: 250,
+        loop: true,
+      })
+    );
+
     // targetting specific node
-    animation.current.add({
-      targets: document.querySelectorAll(".box-2"),
-      translateX: 270,
-    });
+    animation.current.add(
+      anime({
+        targets: document.querySelectorAll(".box-2"),
+        translateX: 270,
+        loop: true,
+      })
+    );
+
     // targetting JS object
-    animation.current.add({
-      targets: battery,
-      charged: "100%",
-      cycles: 130,
-      round: 1,
-      update: function () {
-        document.querySelector(".battery-log").innerHTML =
-          JSON.stringify(battery);
-      },
-    });
+    animation.current.add(
+      anime({
+        targets: battery,
+        charged: "100%",
+        cycles: 130,
+        round: 1,
+        loop: true,
+        update: function () {
+          document.querySelector(".battery-log").innerHTML =
+            JSON.stringify(battery);
+        },
+      })
+    );
+
     // changing css properties
-    animation.current.add({
-      targets: ".box-3",
-      translateX: 240,
-      backgroundColor: "#fff",
-      borderRadius: ["0%", "50%"],
-      easing: "easeInOutQuad",
-    });
+    animation.current.add(
+      anime({
+        targets: ".box-3",
+        translateX: 240,
+        loop: true,
+        backgroundColor: "#fff",
+        borderRadius: ["0%", "50%"],
+        easing: "easeInOutQuad",
+      })
+    );
+
     // changing css transform properties
-    animation.current.add({
-      targets: ".box-4",
-      translateX: 250,
-      scale: 2,
-      rotate: "1turn",
-    });
+    animation.current.add(
+      anime({
+        targets: ".box-4",
+        translateX: 250,
+        loop: true,
+        scale: 2,
+        rotate: "1turn",
+      })
+    );
+
+    // changing svg attributes
+    animation.current.add(
+      anime({
+        targets: "#svg-1 polygon",
+        points: "64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96",
+        baseFrequency: 0,
+        scale: 1,
+        direction: "alternate",
+        loop: true,
+        easing: "easeInOutExpo",
+      })
+    );
   }, []);
 
   return (
     <>
+      <div className="head">
+        <h1>Animation In React With anime.js</h1>
+      </div>
       <div className="wrap">
         <Box cs={"box box-1 bg-red"} />
       </div>
@@ -73,6 +105,16 @@ const App = () => {
       </div>
       <div className="wrap">
         <Box cs={"multi-box box-4 bg-skin"} />
+      </div>
+      <div className="wrap clr-skin">
+        <svg id="svg-1">
+          <polygon
+            height={128}
+            width={128}
+            points="64 68.64 8.574 100 63.446 67.68 64 4 64.554 67.68 119.426 100"
+            fill="currentColor"
+          ></polygon>
+        </svg>
       </div>
     </>
   );

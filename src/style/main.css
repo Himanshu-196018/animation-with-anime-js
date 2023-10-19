@@ -22,6 +22,15 @@ body {
 .bg-skin {
   background-color: hsl(30, 90%, 50%);
 }
+.clr-skin {
+  color: hsl(30, 90%, 50%);
+}
+
+.head {
+  margin-top: 30px;
+  text-align: center;
+  color: #fff;
+}
 
 .wrap {
   border-bottom: 2px solid #000;
