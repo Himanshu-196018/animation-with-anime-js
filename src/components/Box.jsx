@@ -1,9 +1,5 @@
-const Box = ({ cs, bg }) => {
-  return (
-    <div className="wrap">
-      <div className={`box box-${cs} ${bg}`}></div>
-    </div>
-  );
+const Box = ({ cs }) => {
+  return <div className={cs}></div>;
 };
 
 export default Box;

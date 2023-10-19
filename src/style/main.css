@@ -9,22 +9,36 @@
 body {
   background-color: hsla(0, 0%, 10%, 0.9);
   padding: 1rem;
+  font-size: 2rem;
 }
 
 /* color classes */
 .bg-red {
-  background-color: hsl(0, 70%, 40%);
+  background-color: hsl(5, 80%, 50%);
+}
+.clr-red {
+  color: hsl(5, 80%, 50%);
+}
+.bg-skin {
+  background-color: hsl(30, 90%, 50%);
 }
 
 .wrap {
   border-bottom: 2px solid #000;
   height: 300px;
   padding-inline: 6rem;
-  display: grid;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
 }
 
 .box {
   width: 80px;
   height: 80px;
+}
+
+.multi-box {
+  width: 50px;
+  height: 50px;
 }
