@@ -82,6 +82,76 @@ const App = () => {
         easing: "easeInOutExpo",
       })
     );
+
+    // specific property parameters
+    animation.current.add(
+      anime({
+        targets: ".box-5",
+        translateX: {
+          value: 250,
+          duration: 800,
+        },
+        rotate: {
+          value: 360,
+          duration: 1800,
+          easing: "easeInOutSine",
+        },
+        scale: {
+          value: 2,
+          duration: 1600,
+          delay: 800,
+          easing: "easeInOutQuart",
+        },
+        delay: 250, // all property except 'scale' inherit 250ms delay
+        loop: true,
+      })
+    );
+
+    // funtion based parameters
+    animation.current.add(
+      anime({
+        targets: ".box-6",
+        translateX: 270,
+        direction: "alternate",
+        loop: true,
+        delay: function (el, i, l) {
+          return i * 100;
+        },
+        endDelay: function (el, i, l) {
+          return (l - i) * 100;
+        },
+      })
+    );
+
+    // function based values
+    animation.current.add(
+      anime({
+        targets: ".box-7",
+        translateX: function (el) {
+          return el.getAttribute("data-x");
+        },
+        translateY: function (el, i) {
+          return 100 + -90 * i;
+        },
+        scale: function (el, i, l) {
+          return l - i + 0.25;
+        },
+        rotate: function () {
+          return anime.random(-360, 360);
+        },
+        borderRadius: function () {
+          return ["50%", anime.random(10, 35) + "%"];
+        },
+        duration: function () {
+          return anime.random(1600, 2200);
+        },
+        delay: function () {
+          return anime.random(0, 500);
+        },
+        direction: "alternate",
+        loop: true,
+      })
+    );
   }, []);
 
   return (
@@ -115,6 +185,19 @@ const App = () => {
             fill="currentColor"
           ></polygon>
         </svg>
+      </div>
+      <div className="wrap">
+        <Box cs={"box box-5 bg-yellow"} />
+      </div>
+      <div className="wrap">
+        <Box cs={"multi-box box-6 bg-yellow"} />
+        <Box cs={"multi-box box-6 bg-yellow"} />
+        <Box cs={"multi-box box-6 bg-yellow"} />
+      </div>
+      <div className="wrap">
+        <Box cs={"circle box-7 bg-green"} x={"240"} />
+        <Box cs={"circle box-7 bg-green"} x={"80"} />
+        <Box cs={"circle box-7 bg-green"} x={"420"} />
       </div>
     </>
   );
