@@ -31,6 +31,9 @@ body {
 .bg-green {
   background-color: hsl(90, 100%, 65%);
 }
+.bg-bright-green {
+  background-color: hsl(140, 100%, 50%);
+}
 
 .head {
   margin-top: 30px;

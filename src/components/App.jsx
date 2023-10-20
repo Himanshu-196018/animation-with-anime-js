@@ -152,6 +152,35 @@ const App = () => {
         loop: true,
       })
     );
+
+    // property keyframes
+    anime({
+      targets: ".box-8",
+      translateX: [
+        { value: 250, duration: 1000, delay: 500 },
+        { value: 0, duration: 1000, delay: 500 },
+      ],
+      translateY: [
+        { value: -40, duration: 500 },
+        { value: 40, duration: 500, delay: 1000 },
+        { value: 0, duration: 500, delay: 1000 },
+      ],
+      scaleX: [
+        { value: 4, duration: 100, delay: 500, easing: "easeOutExpo" },
+        { value: 1, duration: 900 },
+        { value: 4, duration: 100, delay: 500, easing: "easeOutExpo" },
+        { value: 1, duration: 900 },
+      ],
+      scaleY: [
+        { value: [1.75, 1], duration: 500 },
+        { value: 2, duration: 50, delay: 1000, easing: "easeOutExpo" },
+        { value: 1, duration: 450 },
+        { value: 1.75, duration: 50, delay: 1000, easing: "easeOutExpo" },
+        { value: 1, duration: 450 },
+      ],
+      easing: "easeOutElastic(1, 0.8)",
+      loop: true,
+    });
   }, []);
 
   return (
@@ -198,6 +227,9 @@ const App = () => {
         <Box cs={"circle box-7 bg-green"} x={"240"} />
         <Box cs={"circle box-7 bg-green"} x={"80"} />
         <Box cs={"circle box-7 bg-green"} x={"420"} />
+      </div>
+      <div className="wrap">
+        <Box cs={"circle box-8 bg-bright-green"} />
       </div>
     </>
   );
