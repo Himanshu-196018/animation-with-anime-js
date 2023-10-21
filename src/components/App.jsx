@@ -215,6 +215,36 @@ const App = () => {
       direction: "alternate",
       loop: true,
     });
+
+    // TimeLine
+    // timeline basic
+    let tl = anime.timeline({
+      targets: ".box-13",
+      easing: "easeOutExpo",
+      delay: function (el, i) {
+        return i * 200;
+      },
+      duration: 500,
+      direction: "alternate",
+      loop: true,
+    });
+    // children
+    tl.add({
+      translateX: 250,
+      easing: "spring",
+    })
+      .add({
+        opacity: 0.5,
+        scale: 2,
+      })
+      .add({
+        targets: ".triangle.box-13",
+        rotate: 180,
+      })
+      .add({
+        translateX: 0,
+        scale: 1,
+      });
   }, []);
 
   return (
@@ -281,11 +311,16 @@ const App = () => {
         <Box cs={"small-box box-10 bg-green-an"} />
         <Box cs={"small-box box-10 bg-green-an"} />
       </div>
-      <div className="wrap">
+      <div className="wrap matrix">
         <Matrix cs={"small-box box-11 bg-green-an"} />
       </div>
-      <div className="wrap">
+      <div className="wrap matrix">
         <Matrix cs={"small-box box-12 bg-green-an"} />
+      </div>
+      <div className="wrap">
+        <Box cs={"multi-box box-13 bg-greenish-blue"} />
+        <Box cs={"circle box-13 bg-greenish-blue"} />
+        <Box cs={"triangle box-13 clr-greenish-blue"} />
       </div>
     </>
   );

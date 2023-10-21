@@ -37,6 +37,12 @@ body {
 .bg-green-an {
   background-color: hsl(150, 100%, 60%);
 }
+.bg-greenish-blue {
+  background-color: hsl(170, 100%, 60%);
+}
+.clr-greenish-blue {
+  color: hsl(170, 100%, 60%);
+}
 
 .head {
   margin-top: 30px;
@@ -65,8 +71,8 @@ body {
 }
 
 .circle {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
@@ -75,7 +81,19 @@ body {
   height: 25px;
 }
 
+.triangle {
+  width: 0;
+  height: 0;
+  border-width: 0 28px 50px 28px;
+  border-style: solid;
+  border-color: transparent transparent currentColor transparent;
+}
+
 .row {
   display: flex;
-  gap: 20px;
+  column-gap: 5px;
+}
+
+.matrix {
+  row-gap: 10px;
 }
