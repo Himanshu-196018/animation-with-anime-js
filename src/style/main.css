@@ -34,6 +34,9 @@ body {
 .bg-bright-green {
   background-color: hsl(140, 100%, 50%);
 }
+.bg-green-an {
+  background-color: hsl(150, 100%, 60%);
+}
 
 .head {
   margin-top: 30px;
@@ -65,4 +68,14 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+}
+
+.small-box {
+  width: 25px;
+  height: 25px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
 }
