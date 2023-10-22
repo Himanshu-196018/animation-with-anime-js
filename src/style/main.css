@@ -43,6 +43,18 @@ body {
 .clr-greenish-blue {
   color: hsl(170, 100%, 60%);
 }
+.bg-sky-blue {
+  background-color: hsl(190, 100%, 50%);
+}
+.clr-sky-blue {
+  color: hsl(190, 100%, 50%);
+}
+.bg-violet {
+  background-color: hsl(260, 70%, 60%);
+}
+.clr-violet {
+  color: hsl(260, 70%, 60%);
+}
 
 .head {
   margin-top: 30px;
@@ -96,4 +108,43 @@ body {
 
 .matrix {
   row-gap: 10px;
+}
+
+.btn {
+  background-color: transparent;
+  border: 1px solid currentColor;
+  padding: 0.4rem 1rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input {
+  position: relative;
+  margin-left: 20px;
+  -webkit-appearance: none;
+  background-color: transparent;
+  accent-color: currentColor;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 49%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+  }
+}
+
+.wrap-box-15 {
+  position: relative;
+}
+.box-15 {
+  position: absolute;
+  top: 80px;
+  left: 85px;
 }

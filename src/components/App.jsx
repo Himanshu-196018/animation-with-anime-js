@@ -2,10 +2,12 @@ import anime from "animejs/lib/anime.es.js";
 import { useRef, useEffect } from "react";
 import Box from "./Box";
 import Matrix from "./Matrix";
+import Button from "./Button";
 import ObjectDisplay from "./ObjectDisplay";
 
 const App = () => {
   const animation = useRef(null);
+  const tlc = useRef(null);
   let battery = {
     charged: "0%",
     cycles: 120,
@@ -245,6 +247,50 @@ const App = () => {
         translateX: 0,
         scale: 1,
       });
+
+    // TimeLine Controls
+    let controlsEl = document.querySelector(".input");
+    tlc.current = anime.timeline({
+      direction: "alternate",
+      loop: true,
+      duration: 500,
+      easing: "easeInOutSine",
+      update: function (anim) {
+        controlsEl.value = tlc.current.progress;
+      },
+    });
+    tlc.current
+      .add({
+        targets: ".box-14.multi-box",
+        translateX: 270,
+      })
+      .add(
+        {
+          targets: ".box-14.circle",
+          translateX: 270,
+        },
+        "-= 100"
+      )
+      .add(
+        {
+          targets: ".box-14.triangle",
+          translateX: 270,
+        },
+        "-=100"
+      );
+    controlsEl.addEventListener("input", function () {
+      tlc.current.seek(tlc.current.duration * (controlsEl.value / 100));
+    });
+    const path = anime.path(".box-15-svg path");
+    anime({
+      targets: ".box-15",
+      translateX: path("x"),
+      translateY: path("y"),
+      rotate: path("angle"),
+      easing: "linear",
+      duration: 2000,
+      loop: true,
+    });
   }, []);
 
   return (
@@ -321,6 +367,50 @@ const App = () => {
         <Box cs={"multi-box box-13 bg-greenish-blue"} />
         <Box cs={"circle box-13 bg-greenish-blue"} />
         <Box cs={"triangle box-13 clr-greenish-blue"} />
+      </div>
+      <div className="wrap">
+        <Box cs={"multi-box box-14 bg-sky-blue"} />
+        <Box cs={"circle box-14 bg-sky-blue"} />
+        <Box cs={"triangle box-14 clr-sky-blue"} />
+        <div className="controls">
+          <Button
+            cs="btn clr-sky-blue"
+            text="play"
+            handleControl={() => tlc.current.play}
+          />
+          <Button
+            cs="btn clr-sky-blue"
+            text="pause"
+            handleControl={() => tlc.current.pause}
+          />
+          <Button
+            cs="btn clr-sky-blue"
+            text="restart"
+            handleControl={() => tlc.current.restart}
+          />
+          <input
+            className="input clr-sky-blue"
+            type="range"
+            min={0}
+            max={100}
+          />
+        </div>
+      </div>
+      <div className="wrap clr-violet wrap-box-15">
+        <Box cs={"small-box bg-violet box-15"} />
+        <svg
+          className="box-15-svg"
+          width="256"
+          height="112"
+          viewBox="0 0 256 112"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+            d="M8,56 C8,33.90861 25.90861,16 48,16 C70.09139,16 88,33.90861 88,56 C88,78.09139 105.90861,92 128,92 C150.09139,92 160,72 160,56 C160,40 148,24 128,24 C108,24 96,40 96,56 C96,72 105.90861,92 128,92 C154,93 168,78 168,56 C168,33.90861 185.90861,16 208,16 C230.09139,16 248,33.90861 248,56 C248,78.09139 230.09139,96 208,96 L48,96 C25.90861,96 8,78.09139 8,56 Z"
+          ></path>
+        </svg>
       </div>
     </>
   );
